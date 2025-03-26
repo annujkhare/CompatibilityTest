@@ -62,6 +62,43 @@ button:hover {
     100% { transform: translateY(-100px); opacity: 0; }
 }
 
+
+/* Centering the audio player */
+audio {
+    display: block;
+    margin: 20px auto; /* Centers it horizontally */
+    width: 300px; /* Adjust width */
+    filter: drop-shadow(0px 4px 8px rgba(255, 255, 255, 0.2)); /* Soft glow effect */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Styling the "Try Again" button */
+.try-again {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Gradient effect */
+    border: none;
+    border-radius: 30px; /* More rounded button */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3); /* Soft shadow */
+}
+
+/* Hover effect */
+.try-again:hover {
+    transform: scale(1.05); /* Slight enlargement */
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.5);
+}
+
+/* Adding icon spacing */
+.try-again i {
+    margin-left: 8px; /* Space between text and icon */
+}
+
 .heart {
     position: absolute;
     bottom: 0;
