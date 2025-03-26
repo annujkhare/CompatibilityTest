@@ -1,0 +1,74 @@
+body {
+    background: linear-gradient(-45deg, #cd082f, #e912e1, #c91b2f, #a107b2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Neon Glow Effect */
+h1, h2, p, label {
+    color: #110101;
+    text-align: center;
+    font-family: "Cursive", sans-serif;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+}
+
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid white;
+    border-radius: 10px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(41, 38, 38);
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    background: rgb(219, 212, 212);
+    box-shadow: 0px 0px 10px rgba(239, 237, 237, 0.9);
+}
+
+
+button {
+    background: #ff4d6d;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e63950;
+    transform: scale(1.05);
+}
+
+
+/* Floating Heart Animation */
+@keyframes floatingHearts {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background: url('heart.png');
+    background-size: cover;
+    animation: floatingHearts 2s linear infinite;
+}

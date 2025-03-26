@@ -1,0 +1,73 @@
+<!-- questions2.html (Partner 2 Question Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner 2 Questions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Partner 2, answer the questions:</h2>
+    <form id="questionsForm2">
+        <div id="questionsContainer2"></div>
+        <button type="submit">See Results</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = JSON.parse(localStorage.getItem("questions")) || [
+            "What type of compliments make you feel most appreciated?",
+             "What types of gifts do you appreciate most?",
+             "How do you express love to your partner?",
+             "How do you and your partner approach financial decision in a relationship?",
+             "What’s your ideal way to spend time together?",
+             "How does your partner make you feel emotionally safe in the relationship?",
+             "How do you approach challenges in life?",
+             "What describes your partner best",
+             "How important is career or personal growth support in your relationship?",
+             "What is your Communication style?",
+             "Do you believe in love at first sight and unconditional love in relationship?",
+             "What does loyalty mean to you in a relationship?",
+             "What does love mean to you in a relationship?",
+             "How do you handle conflict in a relationship?",
+             "What makes you feel the most secure in a relationship?",
+             "How do you and your partner resolve misunderstandings?",
+             "What's your partner's Zodiac Sign?",
+             "What is your Sleeping or Energy Level?",
+             "What is your Love Language",
+             "What is your stance on marriage ?",
+             "How do you handle apologies in a relationship?",
+             "What’s your biggest fear in a relationship?",
+             "How do you handle emotional pain?",
+             "How do you feel about planning your life together", 
+             "What is your Attachment style?",
+             "What do you think is the key to a successful relationship?",  
+             "Do you lean towards a more logical or emotional approach to decision-making?",
+             "What kind of touch makes you feel most comforted or secure in a relationship?",
+             "What’s your ideal type of music?",
+            "Do you prefer spontaneous surprises or planned experiences in a relationship?"
+            ];
+
+            const questionsContainer2 = document.getElementById("questionsContainer2");
+
+            questions.forEach((q, index) => {
+                let div = document.createElement("div");
+                div.innerHTML = `<label>${q}</label><input type="text" id="p2q${index}" required>`;
+                questionsContainer2.appendChild(div);
+            });
+
+            // Save Partner 2's Answers & Redirect
+            document.getElementById("questionsForm2").addEventListener("submit", function (e) {
+                e.preventDefault();
+                let answers = [];
+                questions.forEach((_, index) => {
+                    answers.push(document.getElementById(`p2q${index}`).value);
+                });
+                localStorage.setItem("partner2Answers", JSON.stringify(answers));
+                window.location.href = "results.html"; // Redirect to results
+            });
+        });
+    </script>
+</body>
+</html>

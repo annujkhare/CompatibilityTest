@@ -1,0 +1,73 @@
+<!-- questions.html (Partner 1 Question Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner 1 Questions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Partner 1, answer the questions:</h2>
+    <form id="questionsForm">
+        <div id="questionsContainer"></div>
+        <button type="submit">Next (Partner 2)</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = [
+             "What type of compliments make you feel most appreciated?",
+             "What types of gifts do you appreciate most?",
+             "How do you express love to your partner?",
+             "What is your Sleeping or Energy Level?",
+             "What’s your ideal way to spend time together?",
+             "What does love mean to you in a relationship?",
+             "What makes you feel the most secure in a relationship?",
+             "How do you feel about planning your life together", 
+             "What is your Communication style?",
+             "How do you and your partner resolve misunderstandings?",
+             "What is your Attachment style?",
+             "What do you think is the key to a successful relationship?",  
+             "Do you lean towards a more logical or emotional approach to decision-making?",
+             "What’s your ideal type of music?",
+             "What does loyalty mean to you in a relationship?",
+             "How do you handle conflict in a relationship?",
+             "How do you and your partner approach financial decision in a relationship?",
+             "What's your partner's Zodiac Sign?",
+             "Do you prefer spontaneous surprises or planned experiences in a relationship?",
+             "What is your Love Language",
+             "What kind of touch makes you feel most comforted or secure in a relationship?",
+             "What is your stance on marriage ?",
+             "How do you handle apologies in a relationship?",
+             "What’s your biggest fear in a relationship?",
+             "How do you handle emotional pain?",
+             "How does your partner make you feel emotionally safe in the relationship?",
+             "How do you approach challenges in life?",
+             "What describes your partner best",
+             "How important is career or personal growth support in your relationship?",
+             "Do you believe in love at first sight and unconditional love in relationship?",
+            ];
+
+            const questionsContainer = document.getElementById("questionsContainer");
+
+            questions.forEach((q, index) => {
+                let div = document.createElement("div");
+                div.innerHTML = `<label>${q}</label><input type="text" id="answer${index}" required>`;
+                questionsContainer.appendChild(div);
+            });
+
+            // Save Partner 1's Answers & Redirect
+            document.getElementById("questionsForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                let answers = [];
+                questions.forEach((_, index) => {
+                    answers.push(document.getElementById(`answer${index}`).value);
+                });
+                localStorage.setItem("partner1Answers", JSON.stringify(answers));
+                window.location.href = "questions2.html"; // Redirect to Partner 2's questions
+            });
+        });
+    </script>
+</body>
+</html>
