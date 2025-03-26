@@ -66,12 +66,14 @@ button:hover {
 /* Centering the audio player */
 audio {
     display: block;
-    margin: 20px auto; /* Centers it horizontally */
-    width: 300px; /* Adjust width */
-    filter: drop-shadow(0px 4px 8px rgba(255, 255, 255, 0.2)); /* Soft glow effect */
+    margin: 20px auto; /* Center it */
+    width: 350px; /* Wider for better appearance */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
     border-radius: 10px; /* Rounded corners */
+    padding: 5px;
+    backdrop-filter: blur(10px); /* Adds a glass effect */
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3); /* Soft glowing shadow */
 }
-
 /* Styling the "Try Again" button */
 .try-again {
     display: inline-block;
