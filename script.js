@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Partner 1 Answer Submission
     if (document.getElementById("partner1Form")) {
-        document.getElementById("partner1Form").addEventListener("submit", function (e) {
-            e.preventDefault();
+        document.getElementById("partner1Form").addEventListener("submit", function (event) {
+            event.preventDefault();
             localStorage.setItem("name1", document.getElementById("name1").value);
             localStorage.setItem("zodiac1", document.getElementById("zodiac1").value);
             window.location.href = "partner2.html";
@@ -11,23 +11,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Partner 2 Answer Submission
     if (document.getElementById("partner2Form")) {
-        document.getElementById("partner2Form").addEventListener("submit", function (e) {
-            e.preventDefault();
+        document.getElementById("partner2Form").addEventListener("submit", function (event) {
+            event.preventDefault();
             localStorage.setItem("name2", document.getElementById("name2").value);
             localStorage.setItem("zodiac2", document.getElementById("zodiac2").value);
             window.location.href = "questions.html";
         });
     }
 
-    // Display Questions for Both Partners
+    // Display Questions for Partner 1
     if (document.getElementById("questionsContainer")) {
         const questions = [
-           
-    ]};
+            { question: "What is your ideal date?", options: ["Dinner", "Movie", "Adventure", "Relaxing at home"] },
+            { question: "How do you handle conflicts?", options: ["Talk it out", "Give space", "Compromise", "Ignore it"] },
+            { question: "What’s your dream vacation?", options: ["Beach", "Mountains", "City Tour", "Countryside"] },
+            { question: "What’s your love language?", options: ["Words", "Gifts", "Quality Time", "Physical Touch", "Acts of Service"] }
+        ];
+
+        localStorage.setItem("questions", JSON.stringify(questions)); // Store questions for Partner 2
 
         const questionsContainer = document.getElementById("questionsContainer");
 
-          questions.forEach((q, index) => {
+        questions.forEach((q, index) => {
             let div = document.createElement("div");
             let optionsHTML = q.options.map(option => `<option value="${option}">${option}</option>`).join("");
 
@@ -39,27 +44,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 </select>
             `;
             questionsContainer.appendChild(div);
+        });
 
         // Save Partner 1's Answers & Redirect
-           document.getElementById("questionsForm").addEventListener("submit", function (event) {
+        document.getElementById("questionsForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let answers = [];
 
             questions.forEach((_, index) => {
                 let answer = document.getElementById(`answer${index}`).value;
                 answers.push(answer || "No Answer");
-            })
+            });
+
             localStorage.setItem("partner1Answers", JSON.stringify(answers));
             window.location.href = "questions2.html";
         });
+    }
 
-    // Partner 2 Answers Page
+    // Display Questions for Partner 2
     if (document.getElementById("questionsContainer2")) {
         const questionsContainer2 = document.getElementById("questionsContainer2");
-        const questions = JSON.parse(localStorage.getItem("questions")) || [
-           
-        ];
-         questions.forEach((q, index) => {
+        const questions = JSON.parse(localStorage.getItem("questions")) || [];
+
+        questions.forEach((q, index) => {
             let div = document.createElement("div");
             let optionsHTML = q.options.map(option => `<option value="${option}">${option}</option>`).join("");
 
@@ -74,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Save Partner 2's Answers & Redirect
-           document.getElementById("questionsForm2").addEventListener("submit", function (event) {
+        document.getElementById("questionsForm2").addEventListener("submit", function (event) {
             event.preventDefault();
             let answers = [];
 
@@ -84,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             localStorage.setItem("partner2Answers", JSON.stringify(answers));
-            window.location.href = "results.html"
+            window.location.href = "results.html";
         });
     }
 
@@ -92,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("resultText")) {
         let name1 = localStorage.getItem("name1");
         let name2 = localStorage.getItem("name2");
+    }
+});
 
         function calculatePersonalityScore(answer1, answer2) {
             let similarityGroups = {
@@ -609,8 +618,8 @@ if (resultTextElement) {
         }
 
         document.getElementById("loveScore").classList.add("heartbeat");
-    }
-});
+    
+
 
 // Start Confetti for High Scores
     function startConfetti() {
@@ -725,4 +734,3 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Try Again button not found!");
     }
 });
-})
