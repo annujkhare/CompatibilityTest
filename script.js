@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("questionsContainer")) {
         const questions = [
            
-        ];
+    ]};
 
         const questionsContainer = document.getElementById("questionsContainer");
 
@@ -52,12 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("partner1Answers", JSON.stringify(answers));
             window.location.href = "questions2.html";
         });
-    }
 
     // Partner 2 Answers Page
     if (document.getElementById("questionsContainer2")) {
         const questionsContainer2 = document.getElementById("questionsContainer2");
-
         const questions = JSON.parse(localStorage.getItem("questions")) || [
            
         ];
@@ -727,4 +725,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Try Again button not found!");
     }
 });
-
+})
