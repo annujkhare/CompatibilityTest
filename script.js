@@ -22,11 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Display Questions for Partner 1
     if (document.getElementById("questionsContainer")) {
         const questions = [
-            { question: "What is your ideal date?", options: ["Dinner", "Movie", "Adventure", "Relaxing at home"] },
-            { question: "How do you handle conflicts?", options: ["Talk it out", "Give space", "Compromise", "Ignore it"] },
-            { question: "What’s your dream vacation?", options: ["Beach", "Mountains", "City Tour", "Countryside"] },
-            { question: "What’s your love language?", options: ["Words", "Gifts", "Quality Time", "Physical Touch", "Acts of Service"] }
-        ];
+           ];
 
         localStorage.setItem("questions", JSON.stringify(questions)); // Store questions for Partner 2
 
