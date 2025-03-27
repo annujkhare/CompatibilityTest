@@ -275,8 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Display the result
     document.getElementById("result").innerText =  `<strong>${name1} ❤️ ${name2}, your score is ${Math.round(compatibilityPercentage)}%!</strong>`;
 });
-
-}
     `<strong>${name1} ❤️ ${name2}, your score is ${finalScore}%!</strong>`;
 
     function getLoveInsight(score) {
