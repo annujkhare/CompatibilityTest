@@ -251,44 +251,49 @@ document.addEventListener("DOMContentLoaded", function () {
             weights: [10, 5, 7], category: "Core Compatibility"
         }
     ];
+    // Love Score Calculation & Display
+    
+    // Display Love Score & Play Music
+    if (document.getElementById("resultText")) {
+        let name1 = localStorage.getItem("name1");
+        let name2 = localStorage.getItem("name2");
+        let partner1Answers = JSON.parse(localStorage.getItem("partner1Answers")) || [];
+        let partner2Answers = JSON.parse(localStorage.getItem("partner2Answers")) || [];
 
-    // Initialize the scoring system
-    let totalScore = 0;
-    let maxScore = 0;
+        let totalScore = 0;
+        let maxScore = 0;
 
-    // Function to calculate total score
-    function calculateScore(answers) {
-        answers.forEach((answer, index) => {
-            let question = questions[index];
-            totalScore += question.weights[answer];
-            maxScore += 10; // Each question has a maximum possible score of 10
+        questions.forEach((q, index) => {
+            let answer1 = partner1Answers[index];
+            let answer2 = partner2Answers[index];
+
+            let answer1Index = q.options.indexOf(answer1);
+            let answer2Index = q.options.indexOf(answer2);
+
+            if (answer1Index !== -1 && answer2Index !== -1) {
+                let score = Math.abs(q.weights[answer1Index] - q.weights[answer2Index]);
+                totalScore += (10 - score);
+                maxScore += 10;
+            }
         });
-    }
 
-    // Get answers from form and calculate score
-    const answers = getAnswersFromForm(); // Assume this function returns the selected answers as an array
-    calculateScore(answers);
+        let finalScore = Math.round((totalScore / maxScore) * 100);
+        let resultText = document.getElementById("resultText");
+        document.getElementById("resultText").innerHTML = `Your Score is ${name1} & ${name2}: ${finalScore}% ❤️`;
 
-    // Calculate compatibility percentage
-    const compatibilityPercentage = (totalScore / (maxScore * questions.length)) * 100;
 
-    // Display the result
-    document.getElementById("result").innerText =  `<strong>${name1} ❤️ ${name2}, your score is ${Math.round(compatibilityPercentage)}%!</strong>`;
-});
-    `<strong>${name1} ❤️ ${name2}, your score is ${finalScore}%!</strong>`;
-
-    function getLoveInsight(score) {
-    if (score >= 95) {
+    function getLoveInsight(finalScore) {
+    if (finalScore >= 95) {
         return "❤️🔥 You both are a perfect match! Your love and understanding are deep and unbreakable. Keep cherishing each other!";
-    } else if (score >= 80) {
+    } else if (finalScore >= 80) {
         return "💖🔮 Your bond is strong and filled with love! A little more effort in communication will make it even more magical.";
-    } else if (score >= 75) {
+    } else if (finalScore >= 75) {
         return "💞✨ You have a good connection, but there's room for growth. Work on understanding each other better!";
-    } else if (score >= 60) {
+    } else if (finalScore >= 60) {
         return "💕💫A promising bond, but challenges exist. Work on understanding each other better, and your love will shine even brighter";
-    }else if (score >= 35) {
+    }else if (finalScore >= 35) {
         return "🤔💬 There are significant differences in your personalities, but love is all about effort. If you both are willing to grow together, anything is possible.";
-    } else if (score >= 28) {
+    } else if (finalScore >= 28) {
         return "💔✨Your love needs some nurturing. Focus on building trust, communication, and shared interests!";
     } else {
         return "💔 Love is a journey, and yours needs more effort. Talk openly, understand each other, and let love grow!";
@@ -332,14 +337,12 @@ if (resultTextElement) {
         } else {
             loveSong.src = "song8.mp3";  
         }
-
         loveSong.play();
 
         if (finalScore >= 75) {
             startConfetti();
         }
-
-        document.getElementById("loveScore").classList.add("heartbeat");
+        document.getElementById("finalScore").classList.add("heartbeat");
     
 
 
@@ -456,3 +459,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Try Again button not found!");
     }
 });
+    }})
