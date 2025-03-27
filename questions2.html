@@ -206,8 +206,21 @@
                 q.options.forEach((option) => {
                     div.innerHTML += `<input type="radio" name="answer${index}" value="${option}" required> ${option}<br>`;
                 });
-
+                
+                // Add "Other" option with an input box for custom answer
+                div.innerHTML += `
+                    <input type="radio" name="answer${index}" value="Other" id="otherOption${index}"> Other:
+                    <input type="text" id="otherAnswer${index}" placeholder="Please specify" disabled><br>
+                `;
+                
                 questionsContainer.appendChild(div);
+            // Enable/disable the text input based on the "Other" radio button selection
+                const otherRadioButton = document.getElementById(`otherOption${index}`);
+                const otherTextInput = document.getElementById(`otherAnswer${index}`);
+                otherRadioButton.addEventListener('change',
+                 function() {
+                    otherTextInput.disabled = !otherRadioButton.checked;
+                });
             });
 
             document.getElementById("questionsForm2").addEventListener("submit", function (event) {
@@ -215,7 +228,16 @@
                 let answers = [];
                 questions.forEach((_, index) => {
                     let selectedOption = document.querySelector(`input[name="answer${index}"]:checked`);
-                    answers.push(selectedOption ? selectedOption.value : "No answer");
+                     if (selectedOption) {
+                        if (selectedOption.value === "Other") {
+                            const otherTextInput = document.getElementById(`otherAnswer${index}`);
+                            answers.push(otherTextInput.value || "No custom answer provided");
+                        } else {
+                            answers.push(selectedOption.value);
+                        }
+                    } else {
+                        answers.push("No answer"); // Handle if no option is selected
+                    }
                 });
 
                 localStorage.setItem("partner2Answers", JSON.stringify(answers));
