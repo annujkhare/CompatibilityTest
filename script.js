@@ -27,20 +27,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const questionsContainer = document.getElementById("questionsContainer");
 
-        questions.forEach((q, index) => {
+          questions.forEach((q, index) => {
             let div = document.createElement("div");
-            div.innerHTML = `<label>${q}</label><input type="text" id="answer${index}" required>`;
+            let optionsHTML = q.options.map(option => `<option value="${option}">${option}</option>`).join("");
+
+            div.innerHTML = `
+                <label>${q.question}</label>
+                <select id="answer${index}" required>
+                    <option value="" disabled selected>Select an option</option>
+                    ${optionsHTML}
+                </select>
+            `;
             questionsContainer.appendChild(div);
-        });
 
         // Save Partner 1's Answers & Redirect
-        document.getElementById("questionsForm").addEventListener("submit", function (event) {
+           document.getElementById("questionsForm").addEventListener("submit", function (event) {
             event.preventDefault();
             let answers = [];
+
             questions.forEach((_, index) => {
-               let answers = document.getElementById(`answer${index}`).value.trim();
-               answers.push(answer || "No Answer");
-            });
+                let answer = document.getElementById(`answer${index}`).value;
+                answers.push(answer || "No Answer");
+            })
             localStorage.setItem("partner1Answers", JSON.stringify(answers));
             window.location.href = "questions2.html";
         });
@@ -53,23 +61,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const questions = JSON.parse(localStorage.getItem("questions")) || [
            
         ];
-
-        questions.forEach((q, index) => {
+         questions.forEach((q, index) => {
             let div = document.createElement("div");
-            div.innerHTML = `<label>${q}</label><input type="text" id="p2q${index}" required>`;
+            let optionsHTML = q.options.map(option => `<option value="${option}">${option}</option>`).join("");
+
+            div.innerHTML = `
+                <label>${q.question}</label>
+                <select id="p2q${index}" required>
+                    <option value="" disabled selected>Select an option</option>
+                    ${optionsHTML}
+                </select>
+            `;
             questionsContainer2.appendChild(div);
         });
 
         // Save Partner 2's Answers & Redirect
-        document.getElementById("questionsForm2").addEventListener("submit", function (e) {
-            e.preventDefault();
+           document.getElementById("questionsForm2").addEventListener("submit", function (event) {
+            event.preventDefault();
             let answers = [];
+
             questions.forEach((_, index) => {
-                answers = document.getElementById(`p2q${index}`).value.trim();
+                let answer = document.getElementById(`p2q${index}`).value;
                 answers.push(answer || "No Answer");
             });
+
             localStorage.setItem("partner2Answers", JSON.stringify(answers));
-            window.location.href = "results.html";
+            window.location.href = "results.html"
         });
     }
 
