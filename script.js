@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             let answers = [];
             questions.forEach((_, index) => {
-                answers.push(document.getElementById(`answer${index}`).value);
+               let answers = document.getElementById(`answer${index}`).value.trim();
+               answers.push(answer || "No Answer");
             });
             localStorage.setItem("partner1Answers", JSON.stringify(answers));
             window.location.href = "questions2.html";
@@ -64,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             let answers = [];
             questions.forEach((_, index) => {
-                answers.push(document.getElementById(`p2q${index}`).value);
+                answers = document.getElementById(`p2q${index}`).value.trim();
+                answers.push(answer || "No Answer");
             });
             localStorage.setItem("partner2Answers", JSON.stringify(answers));
             window.location.href = "results.html";
@@ -276,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return 7; // 💖 Romantic but at a slower pace
 }
 
-     if (answer.includes("casual dating") || answer.includes("not intense feelings") || 
+     if (answer.includes(["casual dating"]) || answer.includes("not intense feelings") || 
     answer.includes("not very emotional")) {
     return 4; // 🟠 Not highly romantic, but still capable of love
 }
@@ -377,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Supportive": [
                     "Encouraging", "Empathetic", "Understanding", "Good Listener",
                     "Emotionally Available", "Always There for Partner", "Nurturing",
-                    "Knows When You Need Comfort", "Always Cheers for You"
+                    "Knows When You Need Comfort", "Always Cheering for You"
                 ],
                 "Logical": [
                     "Analytical", "Rational", "Fact-Based", "Debater",
