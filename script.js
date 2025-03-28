@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             questions.forEach((_, index) => {
                 let answer = document.getElementById(`answer${index}`).value;
-                answers.push(answer || "No Answer");
+                answers.push(answer || "NoAnswer");
             });
 
             localStorage.setItem("partner1Answers", JSON.stringify(answers));
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             questions.forEach((_, index) => {
                 let answer = document.getElementById(`p2q${index}`).value;
-                answers.push(answer || "No Answer");
+                answers.push(answer || "NoAnswer");
             });
 
             localStorage.setItem("partner2Answers", JSON.stringify(answers));
@@ -103,12 +103,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "What type of compliments make you feel most appreciated?",
             options: ["Words of affirmation", "Acts of service", "Quality time"],
-            weights: [10, 7, 5], category: "Love Languages"
+            weights: [10, 9, 8], category: "Love Languages"
         },
         {
             question: "What types of gifts do you appreciate most?",
             options: ["Practical Gifts", "Sentimental Gifts", "Surprise Gifts"],
-            weights: [7, 10, 5], category: "Love Languages"
+            weights: [7, 10, 9], category: "Love Languages"
         },
         {
             question: "How do you express love to your partner?",
@@ -118,12 +118,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "What is your Sleeping or Energy Level?",
             options: ["Early Bird", "Night owl", "Flexible"],
-            weights: [7, 10, 5], category: "Lifestyle"
+            weights: [8, 8, 10], category: "Lifestyle"
         },
         {
             question: "What’s your ideal way to spend time together?",
             options: ["Deep conversations", "Staying at home", "Adventuring together", "Traveling"],
-            weights: [10, 5, 7, 8], category: "Lifestyle"
+            weights: [10, 8, 8, 8], category: "Lifestyle"
         },
         {
             question: "What does love mean to you in a relationship?",
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "How do you and your partner resolve misunderstandings?",
             options: ["Talking it out", "Avoid & ignore", "Wait for things to settle", "Seeking advice from others"],
-            weights: [10, 3, 7, 8], category: "Conflict Resolution"
+            weights: [10, 3, 5, 6], category: "Conflict Resolution"
         },
         {
             question: "What is your Attachment style?",
@@ -173,17 +173,17 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "What does loyalty mean to you in a relationship?",
             options: ["Trust and support", "Being exclusive", "Always being there", "Respecting each other"],
-            weights: [10, 8, 9, 7], category: "Core Compatibility"
+            weights: [10, 8, 9, 8], category: "Core Compatibility"
         },
         {
             question: "How do you handle conflict in a relationship?",
             options: ["Talk it out immediately", "Take time to cool down", "Argue and Avoid confrontation", "Seek help from others"],
-            weights: [10, 7, 5, 8], category: "Conflict Resolution"
+            weights: [10, 7, 5, 6], category: "Conflict Resolution"
         },
         {
             question: "How do you and your partner approach financial decisions in a relationship?",
             options: ["Discuss and decide together", "One person handles it", "Each handles their own finances", "Split everything evenly"],
-            weights: [10, 5, 7, 6], category: "Lifestyle"
+            weights: [10, 5, 7, 8], category: "Lifestyle"
         },
         {
             question: "What's your partner's Zodiac Sign?",
@@ -198,12 +198,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "What is your Love Language?",
             options: ["Meaningful Conversations", "Doing Things for Love", "Small Thoughtful Gestures", "Remembering All Small Details", "Physical Closeness"],
-            weights: [9, 7, 8, 10, 6], category: "Love Languages"
+            weights: [9, 9, 8, 10, 7], category: "Love Languages"
         },
         {
             question: "What kind of touch makes you feel most comforted or secure in a relationship?",
             options: ["Hugs", "Holding Hands", "Massage & Comforting Touch", "Touch-Based Affection"],
-            weights: [10, 8, 9, 7], category: "Love Languages"
+            weights: [10, 9, 9, 8], category: "Love Languages"
         },
         {
             question: "What is your stance on marriage?",
@@ -213,12 +213,12 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "How do you handle apologies in a relationship?",
             options: ["I apologize immediately", "I wait until I'm calm", "I struggle to apologize", "I expect the other person to apologize first"],
-            weights: [10, 8, 5, 7], category: "Conflict Resolution"
+            weights: [10, 8, 5, 4], category: "Conflict Resolution"
         },
         {
             question: "What’s your biggest fear in a relationship?",
             options: ["Rejection", "Betrayal", "Being misunderstood", "Not being loved", "Casual dating"],
-            weights: [10, 9, 7, 8, 6], category: "Core Compatibility"
+            weights: [10, 9, 10, 8, 6], category: "Core Compatibility"
         },
         {
             question: "How do you handle emotional pain?",
@@ -228,17 +228,17 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "How does your partner make you feel emotionally safe in the relationship?",
             options: ["Listening without judgment", "Offering reassurance", "Being patient and Understanding", "Always Cheering and Encouraging"],
-            weights: [10, 9, 8, 7], category: "Core Compatibility"
+            weights: [10, 9, 9, 9], category: "Core Compatibility"
         },
         {
             question: "How do you approach challenges in life?",
             options: ["Avoid them", "Face them head-on", "Take time to think and strategize", "Seek advice from others"],
-            weights: [5, 10, 8, 7], category: "Lifestyle"
+            weights: [4, 10, 8, 6], category: "Lifestyle"
         },
         {
             question: "What describes your partner best?",
             options: ["Loyal and Trustworthy", "Realistic and Ambitious", "Paranoid in love"],
-            weights: [10, 8, 5], category: "Core Compatibility"
+            weights: [10, 8, 4], category: "Core Compatibility"
         },
         {
             question: "How important is career or personal growth support in your relationship?",
@@ -262,24 +262,84 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let totalScore = 0;
         let maxScore = 0;
+        let NoAnswerPenalty = 0; // Penalty for missing answers
 
+        const perfectMatches = {
+            "Aries": ["Leo", "Sagittarius", "Libra", "Cancer"],
+            "Taurus": ["Virgo", "Capricorn", "Pisces", "Leo"],
+            "Gemini": ["Libra", "Aquarius", "Aries", "Virgo"],
+            "Cancer": ["Scorpio", "Pisces", "Taurus", "Gemini"],
+            "Leo": ["Aries", "Sagittarius", "Gemini", "Taurus"],
+            "Virgo": ["Taurus", "Capricorn", "Scorpio", "Gemini"],
+            "Libra": ["Gemini", "Aquarius", "Leo", "Cancer"],
+            "Scorpio": ["Cancer", "Pisces", "Capricorn", "Aries"],
+            "Sagittarius": ["Aries", "Leo", "Aquarius", "Virgo"],
+            "Capricorn": ["Taurus", "Virgo", "Scorpio", "Sagittarius"],
+            "Aquarius": ["Gemini", "Libra", "Sagittarius", "Capricorn"],
+            "Pisces": ["Cancer", "Scorpio", "Taurus", "Libra"]
+        };
+    
+        const balancingPairs = {
+            "Aries": ["Capricorn", "Scorpio"],  // Fire & Earth = Stability
+            "Taurus": ["Libra", "Sagittarius"], // Earth & Air = Communication balance
+            "Gemini": ["Pisces", "Cancer"],     // Air & Water = Emotional balance
+            "Cancer": ["Leo", "Aquarius"],      // Water & Fire = Passion vs Nurturing
+            "Leo": ["Virgo", "Pisces"],         // Fire & Earth = Strength + Softness
+            "Virgo": ["Aries", "Aquarius"],     // Earth & Fire = Practicality vs Energy
+            "Libra": ["Taurus", "Scorpio"],     // Air & Earth = Stability with Fun
+            "Scorpio": ["Leo", "Gemini"],       // Water & Fire = Deep Passion
+            "Sagittarius": ["Capricorn", "Taurus"], // Fire & Earth = Adventure vs Security
+            "Capricorn": ["Cancer", "Libra"],   // Earth & Water = Stability vs Emotional
+            "Aquarius": ["Scorpio", "Taurus"],  // Air & Water = Intellectual Depth
+            "Pisces": ["Gemini", "Leo"]         // Water & Air = Dreamy vs Logic
+        };
+        
         questions.forEach((q, index) => {
             let answer1 = partner1Answers[index];
             let answer2 = partner2Answers[index];
-
+        
+            if (!answer1 || !answer2) {
+                NoAnswerPenalty += 5; // Deduct 5% per missing answer
+                return;
+            }
+        
             let answer1Index = q.options.indexOf(answer1);
             let answer2Index = q.options.indexOf(answer2);
-
+        
             if (answer1Index !== -1 && answer2Index !== -1) {
-                let score = Math.abs(q.weights[answer1Index] - q.weights[answer2Index]);
-                totalScore += (10 - score);
-                maxScore += 10;
+                let weight1 = q.weights[answer1Index];
+                let weight2 = q.weights[answer2Index];
+        
+                // 🔥 **Fuzzy Matching Logic**
+                let scoreDiff = Math.abs(weight1 - weight2);
+                let questionScore = 10 - scoreDiff; // Closer matches get higher scores
+        
+                // 🔥 **Advanced Scoring**
+                if (q.category === "Love Languages") questionScore += 3;
+                if (q.category === "Conflict Resolution") questionScore += 2;
+                if (q.category === "Core Compatibility") questionScore += 4;
+                if (q.category === "Lifestyle") questionScore += 2;
+                if (q.category === "Fun & Preferences") questionScore += 1; // Lower weight for fun questions
+                
+                
+                if (q.category === "Zodiac") {  
+                if (perfectMatches[answer1]?.includes(answer2)) {
+                        questionScore += 5; // 🔥 Perfect Zodiac Match Bonus
+                    } else if (balancingPairs[answer1]?.includes(answer2)) {
+                        questionScore += 3; // ⚖️ Balancing Pair Bonus
+                    }
+                }
+        
+                totalScore += questionScore;
+                maxScore += 15; // Max possible score per question
             }
         });
-
-        let finalScore = Math.round((totalScore / maxScore) * 100);
+        
+        // Apply penalty
+        let finalScore = Math.round(((totalScore - NoAnswerPenalty) / maxScore) * 100);
+        if (finalScore < 0) finalScore = 0;
         let resultText = document.getElementById("resultText");
-        document.getElementById("resultText").innerHTML = `Your Score is ${name1} & ${name2}: ${finalScore}% ❤️`;
+        document.getElementById("resultText").innerHTML = ` ${name1} & ${name2} Compatibility Percentage is ${finalScore}% ❤️`;
 
 
     function getLoveInsight(finalScore) {
@@ -389,49 +449,6 @@ fire(0.1, {
   startVelocity: 45,
 }); 
     }    
-
-    
-// Zodiac Compatibility Calculation
-function calculateZodiacCompatibility(sign1, sign2) {
-    const perfectMatches = {
-        "Aries": ["Leo", "Sagittarius", "Libra", "Cancer"],
-        "Taurus": ["Virgo", "Capricorn", "Pisces", "Leo"],
-        "Gemini": ["Libra", "Aquarius", "Aries", "Virgo"],
-        "Cancer": ["Scorpio", "Pisces", "Taurus", "Gemini"],
-        "Leo": ["Aries", "Sagittarius", "Gemini", "Taurus"],
-        "Virgo": ["Taurus", "Capricorn", "Scorpio", "Gemini"],
-        "Libra": ["Gemini", "Aquarius", "Leo", "Cancer"],
-        "Scorpio": ["Cancer", "Pisces", "Capricorn", "Aries"],
-        "Sagittarius": ["Aries", "Leo", "Aquarius", "Virgo"],
-        "Capricorn": ["Taurus", "Virgo", "Scorpio", "Sagittarius"],
-        "Aquarius": ["Gemini", "Libra", "Sagittarius", "Capricorn"],
-        "Pisces": ["Cancer", "Scorpio", "Taurus", "Libra"]
-    };
-
-    const balancingPairs = {
-        "Aries": ["Capricorn", "Scorpio"],  // Fire & Earth = Stability
-        "Taurus": ["Libra", "Sagittarius"], // Earth & Air = Communication balance
-        "Gemini": ["Pisces", "Cancer"],     // Air & Water = Emotional balance
-        "Cancer": ["Leo", "Aquarius"],      // Water & Fire = Passion vs Nurturing
-        "Leo": ["Virgo", "Pisces"],         // Fire & Earth = Strength + Softness
-        "Virgo": ["Aries", "Aquarius"],     // Earth & Fire = Practicality vs Energy
-        "Libra": ["Taurus", "Scorpio"],     // Air & Earth = Stability with Fun
-        "Scorpio": ["Leo", "Gemini"],       // Water & Fire = Deep Passion
-        "Sagittarius": ["Capricorn", "Taurus"], // Fire & Earth = Adventure vs Security
-        "Capricorn": ["Cancer", "Libra"],   // Earth & Water = Stability vs Emotional
-        "Aquarius": ["Scorpio", "Taurus"],  // Air & Water = Intellectual Depth
-        "Pisces": ["Gemini", "Leo"]         // Water & Air = Dreamy vs Logic
-    };
-
-    if (perfectMatches[sign1]?.includes(sign2)) {
-        return 30; // Perfect match
-    } else if (balancingPairs[sign1]?.includes(sign2)) {
-        return 20; // Balanced match
-    } else if (sign1.charAt(0) === sign2.charAt(0)) {
-        return 15; // Same element (Fire, Earth, Air, Water)
-    }
-    return 10; // Different signs, but love is possible!
-}
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
