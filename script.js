@@ -449,31 +449,11 @@ fire(0.1, {
   startVelocity: 45,
 }); 
     }    
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    document.body.appendChild(heart);
-
-    const leftPosition = Math.random() * window.innerWidth;
-    heart.style.left = `${leftPosition}px`;
-
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
-}
-
-setInterval(createHeart, 500);
-
-document.addEventListener("DOMContentLoaded", function () {
-    let tryAgainBtn = document.getElementById("tryAgainBtn");
-
-    if (tryAgainBtn) {
-        tryAgainBtn.addEventListener("click", function () {
-            console.log("Try Again button clicked!"); // Debugging
-            window.location.href = "index.html"; // Redirect to the main quiz page
-        });
-    } else {
-        console.error("Try Again button not found!");
+       let tryAgainBtn = document.getElementById("tryAgainBtn");
+        if (tryAgainBtn) {
+            tryAgainBtn.addEventListener("click", function () {
+                window.location.href = "index.html"; 
+            });
+        }
     }
 });
-    }})
