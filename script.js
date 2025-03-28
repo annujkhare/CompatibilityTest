@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "What does love mean to you in a relationship?",
             options: ["Trust & loyalty", "Passion & excitement", "Understanding & care"],
-            weights: [10, 8, 9], category: "Core Compatibility"
+            weights: [10, 7, 9], category: "Core Compatibility"
         },
         {
             question: "What makes you feel the most secure in a relationship?",
@@ -138,17 +138,17 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             question: "How do you feel about planning your life together?",
             options: ["Don't like planning much", "Love planning together", "Prefer taking things step-by-step"],
-            weights: [5, 10, 7], category: "Lifestyle"
+            weights: [4, 10, 8], category: "Lifestyle"
         },
         {
             question: "What is your Communication style?",
             options: ["Open and direct", "Emotional & expressive", "Silent & reserved", "Mood Dependent"],
-            weights: [10, 8, 5, 7], category: "Communication"
+            weights: [10, 8, 5, 6], category: "Communication"
         },
         {
             question: "How do you and your partner resolve misunderstandings?",
             options: ["Talking it out", "Avoid & ignore", "Wait for things to settle", "Seeking advice from others"],
-            weights: [10, 3, 5, 6], category: "Conflict Resolution"
+            weights: [10, 3, 4, 5], category: "Conflict Resolution"
         },
         {
             question: "What is your Attachment style?",
