@@ -24,7 +24,7 @@ A fun and romantic web app to check how compatible you are with your partner bas
 
 📝 How to Use
 
-1. 👉 Go to Love Compatibility Test (https://github.com/annujkhare/CompatibilityTest)
+1. 👉 Go to Love Compatibility Test (https://annujkhare.github.io/CompatibilityTest)
 
 
 2. 🧍 Each partner answers the questions one by one
